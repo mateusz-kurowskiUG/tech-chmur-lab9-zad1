@@ -16,6 +16,10 @@ app.get('/health', (req:Request, res:Response) => {
     res.status(200).send("OK")
 })
 
+app.get('/error', (req:Request, res:Response) => {
+res.status(500).send("ERROR")  
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -3,8 +3,9 @@ services:
     build: .
     ports:
       - "3000:3000"
+    command: ["bun", "start"]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 1m
-      timeout: 10s
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/error || exit 1"]  # Update the health check command
+      interval: 5s
+      timeout: 5s
       retries: 3

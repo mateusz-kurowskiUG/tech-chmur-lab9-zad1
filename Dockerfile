@@ -10,7 +10,5 @@ RUN bun install
 
 COPY /app .
 
-
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "bun health-check.ts" ]
-
-CMD ["bun", "start"]
+# Update HEALTHCHECK to check the application's health, assuming bun health-check.ts does that
+HEALTHCHECK --interval=5s --timeout=5s --start-period=5s --retries=3 CMD curl --fail http://localhost:3000/error || exit 1
